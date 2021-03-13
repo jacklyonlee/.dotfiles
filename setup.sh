@@ -7,7 +7,7 @@ if [ -n "$(command -v apt-get)" ]; then
   sudo apt install vim
   sudo apt install python3.6
 else
-  echo "WARNING: Command 'apt-get' not found. Please install dependencies manally."
+  echo "WARNING: Command 'apt-get' not found. Please install dependencies manually."
 fi
 
 # download vim-plug
