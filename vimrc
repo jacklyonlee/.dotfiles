@@ -29,6 +29,11 @@ let g:ctrlp_prompt_mappings = {
             \ 'AcceptSelection("t")': ['<cr>'],
             \ }
 
+" setup completor
+inoremap <expr> <Tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
+
 " setup keybindings
 nnoremap <silent><space>t :tabe<cr>
 nnoremap <silent><tab> :tabn<cr>

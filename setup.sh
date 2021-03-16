@@ -24,5 +24,3 @@ ln -s $DIR/tmux.conf ~/.tmux.conf
 
 # download vim plugins
 vim +PlugInstall +PlugClean! +qall
-
-
