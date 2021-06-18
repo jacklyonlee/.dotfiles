@@ -10,6 +10,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'itchyny/lightline.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'maralla/completor.vim'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " setup lightline
