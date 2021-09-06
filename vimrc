@@ -1,5 +1,8 @@
 " ======= vim keybindings =======
 " open-fuzzy-finder     SPC .
+" auto-format           SPC f
+" jump-to-def           SPC ]
+" jump-back             SPC o
 " open-tab              SPC t
 " next-tab              TAB
 " prev-tab              SHFT TAB
@@ -8,9 +11,9 @@
 call plug#begin('~/.vim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'itchyny/lightline.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'maralla/completor.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " setup lightline
@@ -30,12 +33,28 @@ let g:ctrlp_prompt_mappings = {
             \ 'AcceptSelection("t")': ['<cr>'],
             \ }
 
-" setup completor
-inoremap <expr> <Tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
+" setup completor keybindings
+function! Tab_Or_Complete() abort
+  if pumvisible()
+    return "\<C-N>"
+  elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^[[:keyword:][:ident:]]'
+    return "\<C-R>=completor#do('complete')\<CR>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab> Tab_Or_Complete()
+noremap <silent> <space>] :call completor#do('definition')<CR>
+noremap <silent> <space>o <C-o>
+noremap <silent> <space>f :call completor#do('format')<CR>
 
-" setup keybindings
+" setup semantic completion
+" let g:completor_python_binary = '/path/to/python/with/jedi/installed'
+" let g:completor_clang_binary = '/path/to/clang'
+
+" setup general keybindings
 nnoremap <silent><space>t :tabe<cr>
 nnoremap <silent><tab> :tabn<cr>
 nnoremap <silent><s-tab> :tabp<cr>
@@ -58,7 +77,7 @@ set background=dark
 let &t_SI.="\e[5 q"
 let &t_SR.="\e[4 q"
 let &t_EI.="\e[1 q"
-silent! colorscheme deus
+silent! colorscheme onedark
 filetype plugin indent on
 
 " fix backspace on mac

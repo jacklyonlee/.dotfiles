@@ -10,7 +10,6 @@ curl -fLo $DIR/vim/autoload/plug.vim --create-dirs \
 # setup symlinks
 ln -s $DIR/vim ~/.vim
 ln -s $DIR/vimrc ~/.vimrc
-ln -s $DIR/tmux.conf ~/.tmux.conf
 
 # download vim plugins
 vim +PlugInstall +PlugClean! +qall
