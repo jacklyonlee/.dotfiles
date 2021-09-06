@@ -1,5 +1,7 @@
 " ======= vim keybindings =======
-" open-fuzzy-finder     SPC .
+" open-fzf              SPC .
+" open-pane             SPC s
+" move-pane             SPC l
 " open-tab              SPC t
 " next-tab              TAB
 " prev-tab              SHFT TAB
@@ -26,29 +28,30 @@ let g:ctrlp_custom_ignore = {
             \ 'file': '\v\.(exe|so|dll|zip|gz|swp|swo|png|pdf)$'
             \ }
 let g:ctrlp_prompt_mappings = {
-            \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
             \ 'AcceptSelection("t")': ['<cr>'],
             \ }
 
 " setup completor keybindings
 function! Tab_Or_Complete() abort
   if pumvisible()
-    return "\<C-N>"
+    return "\<c-n>"
   elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^[[:keyword:][:ident:]]'
-    return "\<C-R>=completor#do('complete')\<CR>"
+    return "\<c-r>=completor#do('complete')\<cr>"
   else
-    return "\<Tab>"
+    return "\<tab>"
   endif
 endfunction
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <Tab> Tab_Or_Complete()
+inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <expr> <tab> Tab_Or_Complete()
 
 " setup semantic completion
 " let g:completor_python_binary = '/path/to/python/with/jedi/installed'
 " let g:completor_clang_binary = '/path/to/clang'
 
 " setup general keybindings
+nnoremap <silent><space>s :vs<cr>
+nnoremap <silent><space>l <c-w><c-w>
 nnoremap <silent><space>t :tabe<cr>
 nnoremap <silent><tab> :tabn<cr>
 nnoremap <silent><s-tab> :tabp<cr>
@@ -63,6 +66,8 @@ set cursorline
 set noshowmode
 set noshowcmd
 set splitbelow
+set splitright
+set mouse=a
 set expandtab
 set tabstop=2
 set softtabstop=2
