@@ -1,8 +1,5 @@
 " ======= vim keybindings =======
 " open-fuzzy-finder     SPC .
-" auto-format           SPC f
-" jump-to-def           SPC ]
-" jump-back             SPC o
 " open-tab              SPC t
 " next-tab              TAB
 " prev-tab              SHFT TAB
@@ -46,9 +43,6 @@ endfunction
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <Tab> Tab_Or_Complete()
-noremap <silent> <space>] :call completor#do('definition')<CR>
-noremap <silent> <space>o <C-o>
-noremap <silent> <space>f :call completor#do('format')<CR>
 
 " setup semantic completion
 " let g:completor_python_binary = '/path/to/python/with/jedi/installed'
