@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'maralla/completor.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
@@ -57,8 +58,6 @@ nnoremap <silent><tab> :tabn<cr>
 nnoremap <silent><s-tab> :tabp<cr>
 nnoremap <silent><c-e> 8<c-e>
 nnoremap <silent><c-y> 8<c-y>
-nnoremap <silent>d "_d
-vnoremap <silent>d "_d
 
 " setup appearance
 set number
