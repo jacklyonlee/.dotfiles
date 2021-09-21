@@ -10,7 +10,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'maralla/completor.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0ng/vim-hybrid'
